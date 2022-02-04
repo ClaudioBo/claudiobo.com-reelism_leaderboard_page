@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Claudio Bo &mdash; Reelism Scoreboard</title>
+</head>
+
+<body>
+    <div>
+        <div class="bg-scroll"></div>
+        <div class="container fixed-width">
+            <img class="center logo" src="img/logo.png">
+            <img class="center logo" id="title">
+            <hr>
+            <h1>Information</h1>
+            <p>Scores are retrieved from my Zandronum server called: <strong>[Klediozmania] :: Reelism x3.1 Zandronum Patch v1.0</strong></p>
+            <p>You can register on <strong><a href="http://auth.zandronum.com/">Zandronum Auth Server</a></strong> and then type <strong>login &lt;username&gt; &lt;password&gt;</strong> in the console.</p>
+            <p>Once you get logged in, your score will be saved when you die or when you kill a boss. Remember, you'll lose <strong>-2000</strong> score if you die!</p>
+            <hr>
+            <h1>Scores</h1>
+            <div class="container">
+                <table>
+                    <tr>
+                        <th><img id="place"></th>
+                        <th><img id="name"></th>
+                        <th><img id="score"></th>
+                    </tr>
+                    <tr>
+                        <td><img id="one"></td>
+                        <td><img id="one_name"></td>
+                        <td><img id="one_score"></td>
+                    </tr>
+                    <tr>
+                        <td><img id="two"></td>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    <tr>
+                        <td><img id="three"></td>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    <tr>
+                        <td><img id="four"></td>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    <tr>
+                        <td><img id="five"></td>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    <tr>
+                        <td><img id="six"></td>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    <tr>
+                        <td><img id="seven"></td>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    <tr>
+                        <td><img id="eight"></td>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    <tr>
+                        <td><img id="nine"></td>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    <tr>
+                        <td><img id="ten"></td>
+                        <td>{{ name }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                </table>
+            </div>
+            <p class="small">Reelism Mod developed by <strong><a href="https://forum.zdoom.org/viewtopic.php?t=31490">300 Pounds</a></strong> &mdash; Website, Score Database Implementation, Zandronum Font JS-Previewer developed by <strong><a href="http://claudiobo.com">Kledioz</a></strong></p>
+        </div>
+    </div>
+
+</body>
+<script src="js/zanfont_coords.js"></script>
+<script src="js/zanfont_colors.js"></script>
+<script src="js/zanfont.js"></script>
+<script>
+    zandro_draw("title", "Top 10 scores website!");
+    zandro_draw("place", "\\cfPlace");
+    zandro_draw("name", "\\cfPlayer's name");
+    zandro_draw("score", "\\cfScore");
+    zandro_draw("one", "01");
+    zandro_draw("two", "02");
+    zandro_draw("three", "03");
+    zandro_draw("four", "04");
+    zandro_draw("five", "05");
+    zandro_draw("six", "06");
+    zandro_draw("seven", "07");
+    zandro_draw("eight", "08");
+    zandro_draw("nine", "09");
+    zandro_draw("ten", "10");
+    zandro_draw("one_name", "\\c[w8]Kledioz");
+    zandro_draw("one_score", "6612");
+</script>
+
+</html>
