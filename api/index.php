@@ -7,10 +7,10 @@ function load_players() {
     $query = SQLite::getInstance()->query($query_zan);
     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
         $player = [];
-        $player[0] = $row[0];
-        $player[1] = $row[1];
-        $player[2] = (int)$row[2];
-        $player[3] = $row[3];
+        $player[0] = $row['KeyName'];
+        $player[1] = $row['Alias'];
+        $player[2] = (int)$row['Value'];
+        //$player[2] = $row['Timestamp'];
         array_push($result, $player);
     }
     return $result;
