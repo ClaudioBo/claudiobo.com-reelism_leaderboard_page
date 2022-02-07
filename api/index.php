@@ -1,6 +1,7 @@
 <?php
 require("util/toro.php");
 require("util/sqlite.php");
+require("util/hellohandler.php");
 require("util/scorehandler.php");
 
 //Error
@@ -9,6 +10,7 @@ ToroHook::add("404",  function () {
 });
 
 // Rutas
-Toro::serve(
-    array("/" => "ScoreHandler",)
-);
+Toro::serve(array(
+    "/" => "HelloHandler",
+    "/score" => "ScoreHandler",
+));
