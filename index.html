@@ -23,61 +23,11 @@
             <hr>
             <h1>Scores</h1>
             <div class="container">
-                <table>
+                <table id="table">
                     <tr>
                         <th><img id="place"></th>
                         <th><img id="name"></th>
                         <th><img id="score"></th>
-                    </tr>
-                    <tr>
-                        <td><img id="one"></td>
-                        <td><img id="one_name"></td>
-                        <td><img id="one_score"></td>
-                    </tr>
-                    <tr>
-                        <td><img id="two"></td>
-                        <td>{{ name }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    <tr>
-                        <td><img id="three"></td>
-                        <td>{{ name }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    <tr>
-                        <td><img id="four"></td>
-                        <td>{{ name }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    <tr>
-                        <td><img id="five"></td>
-                        <td>{{ name }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    <tr>
-                        <td><img id="six"></td>
-                        <td>{{ name }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    <tr>
-                        <td><img id="seven"></td>
-                        <td>{{ name }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    <tr>
-                        <td><img id="eight"></td>
-                        <td>{{ name }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    <tr>
-                        <td><img id="nine"></td>
-                        <td>{{ name }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    <tr>
-                        <td><img id="ten"></td>
-                        <td>{{ name }}</td>
-                        <td>{{ score }}</td>
                     </tr>
                 </table>
             </div>
@@ -90,23 +40,87 @@
 <script src="js/zanfont_colors.js"></script>
 <script src="js/zanfont.js"></script>
 <script>
-    const font = "smallfont"
+    //Startup text
     zandro_draw("title", "Top 10 scores website!", "bigfont");
-    zandro_draw("place", "\\cfPlace", "bigfont" );
-    zandro_draw("name", "\\cfPlayer's name", "bigfont" );
-    zandro_draw("score", "\\cfScore", "bigfont" );
-    zandro_draw("one", "01", font );
-    zandro_draw("two", "02", font );
-    zandro_draw("three", "03", font );
-    zandro_draw("four", "04", font );
-    zandro_draw("five", "05", font );
-    zandro_draw("six", "06", font );
-    zandro_draw("seven", "07", font );
-    zandro_draw("eight", "08", font );
-    zandro_draw("nine", "09", font );
-    zandro_draw("ten", "10", font );
-    zandro_draw("one_name", "\\c[w5]12345678901234567890123456789012", font );
-    zandro_draw("one_score", "6612", font );
+    zandro_draw("place", "\\cfPlace", "bigfont");
+    zandro_draw("name", "\\cfPlayer's name", "bigfont");
+    zandro_draw("score", "\\cfScore", "bigfont");
+</script>
+<script>
+    //Data fetching
+    const fetchData = () => {
+        fetch("https://claudiobo.com/leaderboard/api")
+            .then(resp => resp.json())
+            .then(data => showData(data))
+            .catch(error => showError(error));
+    }
+
+    const populateTable = () => {
+        const table = document.getElementById("table")
+        for (let i = 0; i < 10; i++) {
+            let img_place = document.createElement("img")
+            let img_playername = document.createElement("img")
+            let img_score = document.createElement("img")
+            img_place.id = `place-${i + 1}-img`
+            img_playername.id = `player-${i + 1}-img`
+            img_score.id = `score-${i + 1}-img`
+            img_place.src = "img/loading.gif"
+            img_playername.src = "img/loading.gif"
+            img_score.src = "img/loading.gif"
+
+            let td_place = document.createElement("td")
+            let td_playername = document.createElement("td")
+            let td_score = document.createElement("td")
+            td_place.id = `place-${i + 1}`
+            td_playername.id = `player-${i + 1}`
+            td_score.id = `score-${i + 1}`
+
+            td_place.appendChild(img_place)
+            td_playername.appendChild(img_playername)
+            td_score.appendChild(img_score)
+
+            let tr_row = document.createElement("tr")
+            tr_row.appendChild(td_place)
+            tr_row.appendChild(td_playername)
+            tr_row.appendChild(td_score)
+
+            table.appendChild(tr_row)
+        }
+    };
+
+    const showData = (data) => {
+        for (let i = 0; i < 10; i++) {
+            const element = data[i];
+            let place = (i + 1 < 10) ? "0" + (i + 1).toString() : (i + 1).toString() //bruh
+            let userName = "n/a"
+            let playerName = "n/a"
+            let score = "n/a"
+            if (element) {
+                userName = element[0]
+                playerName = element[1].replaceAll('', '\\c')
+                score = element[2]
+            }
+            document.getElementById(`player-${i + 1}-img`).title = userName
+            zandro_draw(`place-${i + 1}-img`, place, "bigfont");
+            zandro_draw(`player-${i + 1}-img`, playerName, "smallfont");
+            zandro_draw(`score-${i + 1}-img`, score.toString(), "smallfont");
+        }
+    }
+
+    const showError = (error) => {
+        console.error(error)
+        for (let i = 0; i < 10; i++) {
+            let place = "\\can/a"
+            let playerName = "\\cg" + error.message
+            let score = "\\can/a"
+            zandro_draw(`place-${i + 1}-img`, place, "smallfont");
+            zandro_draw(`player-${i + 1}-img`, playerName, "smallfont");
+            zandro_draw(`score-${i + 1}-img`, score.toString(), "smallfont");
+        }
+    }
+
+    populateTable();
+    fetchData();
 </script>
 
 </html>

@@ -1,10 +1,10 @@
-/* yes i got container shit from thekinsies.com website, i dont know webdesing im dumb */
 .container {
     background        : #ffffffcc;
     margin            : 0 auto;
     padding           : 1em;
     -webkit-box-shadow: 0px 0px 8px 0px #00000080;
     box-shadow        : 0px 0px 8px 0px #00000080;
+    border-radius     : 25px;
 }
 
 .fixed-width {
@@ -19,7 +19,7 @@ h1 {
 }
 
 table {
-    width          : 100%;
+    width: 100%;
 }
 
 p {
@@ -27,7 +27,8 @@ p {
 }
 
 table img {
-    zoom: 200%;
+    filter: drop-shadow(2px 2px 0px #a6a6a6);
+    zoom  : 200%;
 }
 
 td {
@@ -35,8 +36,8 @@ td {
 }
 
 .small {
-    font-size: 0.7em;
-    text-align: center;
+    font-size  : 0.7em;
+    text-align : center;
     font-weight: 700;
 }
 
