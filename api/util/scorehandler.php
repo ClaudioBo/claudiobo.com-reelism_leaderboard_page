@@ -1,6 +1,6 @@
 <?php
 
-class ProductosHandler {
+class ScoreHandler {
     function get() {
         echo json_encode(load_players());
     }

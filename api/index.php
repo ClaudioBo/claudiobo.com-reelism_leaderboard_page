@@ -7,9 +7,6 @@ require("util/scorehandler.php");
 ToroHook::add("404",  function () {
     echo json_encode(array('error' => 'Not Found',));
 });
-ToroHook::add("500",  function () {
-    echo json_encode(array('error' => 'Internal Error',));
-});
 
 // Rutas
 Toro::serve(
