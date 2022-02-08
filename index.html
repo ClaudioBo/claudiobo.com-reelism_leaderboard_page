@@ -49,7 +49,7 @@
 <script>
     //Data fetching
     const fetchData = () => {
-        fetch("https://claudiobo.com/leaderboard/api")
+        fetch("api")
             .then(resp => resp.json())
             .then(data => showData(data))
             .catch(error => showError(error));
